@@ -1,0 +1,7 @@
+= link_to sanitize('🔙 Back to movies'), movies_path, class:'btn btn-outline-primary text-black'
+
+- content_for(:title) do
+  h2 = controller_name.humanize
+
+= turbo_frame_tag id='second_frame'
+  = render 'movies/form', movie: @movie

@@ -1,1 +1,17 @@
 h1 Hello visitor!
+
+
+ul#myTab.nav.nav-tabs role="tablist"
+  li.nav-item role="presentation"
+    button#home-tab.nav-link.badge.bg-secondary.rounded-pill.active aria-controls="home" aria-selected="true" data-bs-target="#home" data-bs-toggle="tab" role="tab" type="button"  All
+  li.nav-item role="presentation"
+    button#profile-tab.nav-link.badge.bg-secondary.rounded-pill aria-controls="profile" aria-selected="false" data-bs-target="#profile" data-bs-toggle="tab" role="tab" type="button"  Horrors
+  li.nav-item role="presentation"
+    button#contact-tab.nav-link.badge.bg-secondary.rounded-pill aria-controls="contact" aria-selected="false" data-bs-target="#contact" data-bs-toggle="tab" role="tab" type="button"  Vesterns
+#myTabContent.tab-content
+  #home.tab-pane.fade.show.active aria-labelledby="home-tab" role="tabpanel"
+    span Vestern
+  #profile.tab-pane.fade aria-labelledby="profile-tab" role="tabpanel"
+    span Comedy
+  #contact.tab-pane.fade aria-labelledby="contact-tab" role="tabpanel"
+    span Horror

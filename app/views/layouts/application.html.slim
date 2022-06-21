@@ -11,6 +11,10 @@ html
     .container
       .header
         = render 'shared/navbar'
-        = render 'shared/alerts'
       .main
+        .row.mt-2
+          .col
+            = yield :title
+          .col.text-end
+            = yield :button_link
         = yield

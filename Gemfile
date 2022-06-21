@@ -36,6 +36,11 @@ gem "tzinfo-data", platforms: %i[ mingw mswin x64_mingw jruby ]
 gem "bootsnap", require: false
 gem 'devise'
 gem 'slim-rails'
+gem "kaminari", "~> 1.2"
+gem "pundit", "~> 2.2"
+gem "sidekiq", "~> 6.5"
+gem "simple_form", "~> 5.1"
+gem "acts_as_votable", "~> 0.13.2"
 
 # Use Sass to process CSS
 gem "sassc-rails"
@@ -69,5 +74,3 @@ group :test do
   gem "selenium-webdriver"
   gem "webdrivers"
 end
-
-

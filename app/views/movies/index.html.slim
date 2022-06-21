@@ -1,2 +1,26 @@
+- content_for(:title) do
+  h2 = controller_name.humanize
 
+- content_for(:button_link) do
+  = link_to 'New movie', new_movie_path, class: 'btn btn-outline-primary text-black', data: { turbo_frame: 'second_frame' }
 
+.card
+  .card-header
+    = turbo_frame_tag id='second_frame'
+  .card-body
+    .row
+      - @movies.each do |movie|
+        .col-md-3
+          .card.mt-2 style=("width: 18rem;")
+            img.card-img-top = image_tag('ukrainian_flag.jpg')
+            .card-body
+              h5.card-title = movie.title
+              p.card-text = movie.description
+              h6.card-subtext
+                .row
+                  .col-auto
+                    = button_to '👍', vote_up_movie_path(movie), class: 'btn btn-link'
+                  .col-auto.text-start
+                    = button_to '👎', vote_up_movie_path(movie), class: 'btn btn-link'
+    .d-flex.justify-content-center.mt-2
+      = paginate @movies

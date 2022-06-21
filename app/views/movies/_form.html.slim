@@ -1,0 +1,8 @@
+= simple_form_for movie, html: { class: 'movie form' } do |f|
+  .row
+    .col-md-4
+      = f.input :title, input_html: { autofocus: true }
+      = f.input :description, input_html: { autofocus: true }
+      .mt-2
+        = f.button :submit, class:'btn btn-sm btn-success'
+        = link_to 'Cancel', :back, class: 'btn btn-sm btn-danger ms-2'

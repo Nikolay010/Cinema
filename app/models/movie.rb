@@ -1,4 +1,7 @@
 class Movie < ApplicationRecord
+
+  acts_as_votable
+
   validates :title, presence: true
   validates :description, presence: true
 

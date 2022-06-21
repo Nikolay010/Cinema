@@ -9,3 +9,7 @@
 100.times do
   Movie.create(title: Faker::Movie.title, description: Faker::Movie.quote, categories: Movie.categories.values.sample)
 end
+
+AdminUser.create!(email: 'admin@example.com',
+                  password: 'password',
+                  password_confirmation: 'password') if Rails.env.development?
