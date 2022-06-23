@@ -9,8 +9,6 @@ nav.navbar.navbar-expand-lg.navbar-dark.bg-dark.sticky-top.navbar-expand-md
       .d-flex.align-items-center.flex-md-row.flex-column
       - if current_user
         ul.navbar-nav
-          li.nav-item
-            = link_to Movie, movies_path, class: 'nav-link'
           li.nav-item.dropdown
             a#navbarDarkDropdownMenuLink.nav-link.dropdown-toggle aria-expanded="false" data-bs-toggle="dropdown" href="#" role="button"
               | User

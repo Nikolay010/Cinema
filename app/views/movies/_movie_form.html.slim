@@ -1,0 +1,14 @@
+.row
+  - movies.each do |movie|
+    .col-md-3
+      .card.mt-2 style=("width: 18rem; height: 22rem;")
+        img.card-img-top = image_tag('ukrainian_flag.jpg')
+        .card-body
+          h5.card-title = movie.title
+          p.card-text = movie.description
+          h6.card-subtext
+            .row
+              .col-auto
+                = button_to '👍', vote_up_movie_path(movie), class: 'btn btn-link'
+              .col-auto.text-start
+                = button_to '👎', vote_up_movie_path(movie), class: 'btn btn-link'

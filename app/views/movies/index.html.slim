@@ -2,25 +2,48 @@
   h2 = controller_name.humanize
 
 - content_for(:button_link) do
-  = link_to 'New movie', new_movie_path, class: 'btn btn-outline-primary text-black', data: { turbo_frame: 'second_frame' }
+  - if current_user.admin?
+    = link_to 'New movie', new_movie_path, class: 'btn btn-outline-primary text-black', data: { turbo_frame: 'second_frame' }
 
 .card
   .card-header
     = turbo_frame_tag id='second_frame'
+    .div
+      ul#pills-tab.nav.nav-pills.mb-3 role="tablist"
+        li.nav-item role="presentation"
+          button#pills-all-tab.nav-link.text-dark.active data-bs-target="#pills-all" data-bs-toggle="pill" role="tab" type="button"  All
+        li.nav-item role="presentation"
+          button#pills-comedy-tab.nav-link.text-dark data-bs-target="#pills-comedy" data-bs-toggle="pill" role="tab" type="button"  Comedy
+        li.nav-item role="presentation"
+          button#pills-vesterns-tab.nav-link.text-dark data-bs-target="#pills-vesterns" data-bs-toggle="pill" role="tab" type="button"  Vesterns
+        li.nav-item role="presentation"
+          button#pills-horrors-tab.nav-link.text-dark data-bs-target="#pills-horrors" data-bs-toggle="pill" role="tab" type="button"  Horrors
+        li.nav-item role="presentation"
+          button#pills-military-tab.nav-link.text-dark data-bs-target="#pills-military" data-bs-toggle="pill" role="tab" type="button"  Military
+        li.nav-item role="presentation"
+          button#pills-fantasy-tab.nav-link.text-dark data-bs-target="#pills-fantasy" data-bs-toggle="pill" role="tab" type="button"  Fantasy
   .card-body
-    .row
-      - @movies.each do |movie|
-        .col-md-3
-          .card.mt-2 style=("width: 18rem;")
-            img.card-img-top = image_tag('ukrainian_flag.jpg')
-            .card-body
-              h5.card-title = movie.title
-              p.card-text = movie.description
-              h6.card-subtext
-                .row
-                  .col-auto
-                    = button_to '👍', vote_up_movie_path(movie), class: 'btn btn-link'
-                  .col-auto.text-start
-                    = button_to '👎', vote_up_movie_path(movie), class: 'btn btn-link'
-    .d-flex.justify-content-center.mt-2
-      = paginate @movies
+    #pills-tabContent.tab-content
+      #pills-all.tab-pane.fade.show.active aria-labelledby="all-tab" role="tabpanel"
+        = render 'movies/movie_form', :movies => @movies
+        .d-flex.justify-content-center.mt-2
+          = paginate @movies
+      #pills-comedy.tab-pane.fade aria-labelledby="comedy-tab" role="tabpanel"
+        = render 'movies/movie_form', :movies => @movies
+        .d-flex.justify-content-center.mt-2
+          = paginate @movies.comedy
+      #pills-vesterns.tab-pane.fade aria-labelledby="vesterns-tab" role="tabpanel"
+        = render 'movies/movie_form', :movies => @movies
+        .d-flex.justify-content-center.mt-2
+          = paginate @movies.vesterns
+      #pills-horrors.tab-pane.fade aria-labelledby="horrors-tab" role="tabpanel"
+        = render 'movies/movie_form', :movies => @movies
+        .d-flex.justify-content-center.mt-2
+          = paginate @movies.horrors
+      #pills-military.tab-pane.fade aria-labelledby="military-tab" role="tabpanel"
+        = render 'movies/movie_form', :movies => @movies
+        .d-flex.justify-content-center.mt-2
+          = paginate @movies.military
+      #pills-fantasy.tab-pane.fade aria-labelledby="fantasy-tab" role="tabpanel"
+        = render 'movies/movie_form', :movies => @movies
+        = paginate @movies.fantasy
