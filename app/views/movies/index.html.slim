@@ -26,23 +26,24 @@
       #pills-all.tab-pane.fade.show.active aria-labelledby="all-tab" role="tabpanel"
         = render 'movies/movie_form', :movies => @movies
         .d-flex.justify-content-center.mt-2
-          = paginate @movies
+          == pagy_bootstrap_nav(@pagy)
       #pills-comedy.tab-pane.fade aria-labelledby="comedy-tab" role="tabpanel"
         = render 'movies/movie_form', :movies => @movies
         .d-flex.justify-content-center.mt-2
-          = paginate @movies.comedy
+          == pagy_bootstrap_nav(@pagy)
       #pills-vesterns.tab-pane.fade aria-labelledby="vesterns-tab" role="tabpanel"
         = render 'movies/movie_form', :movies => @movies
         .d-flex.justify-content-center.mt-2
-          = paginate @movies.vesterns
+          == pagy_bootstrap_nav(@pagy)
       #pills-horrors.tab-pane.fade aria-labelledby="horrors-tab" role="tabpanel"
         = render 'movies/movie_form', :movies => @movies
         .d-flex.justify-content-center.mt-2
-          = paginate @movies.horrors
+          == pagy_bootstrap_nav(@pagy)
       #pills-military.tab-pane.fade aria-labelledby="military-tab" role="tabpanel"
         = render 'movies/movie_form', :movies => @movies
         .d-flex.justify-content-center.mt-2
-          = paginate @movies.military
+          == pagy_bootstrap_nav(@pagy)
       #pills-fantasy.tab-pane.fade aria-labelledby="fantasy-tab" role="tabpanel"
         = render 'movies/movie_form', :movies => @movies
-        = paginate @movies.fantasy
+        .d-flex.justify-content-center.mt-2
+          == pagy_bootstrap_nav(@pagy)

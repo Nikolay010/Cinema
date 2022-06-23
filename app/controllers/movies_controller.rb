@@ -4,7 +4,7 @@ class MoviesController < ApplicationController
   before_action :set_movie, only: [:show, :edit, :update, :destroy]
 
   def index
-    @movies = Movie.order(:title).page(params[:page])
+    @pagy, @movies = pagy(Movie.all)
   end
 
   def new
