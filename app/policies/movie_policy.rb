@@ -3,12 +3,12 @@
 class MoviePolicy < ApplicationPolicy
   attr_reader :user, :movie
 
-  def initialize(user, movie)
-    @user = user
+  def initialize(current_user, movie)
+    @current_user = current_user
     @movie = movie
   end
 
   def create?
-    User.admin?
+    @current_user.admin?
   end
 end

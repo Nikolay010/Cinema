@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class MoviesController < ApplicationController
+  before_action :authenticate_user!, except: :index
   before_action :set_movie, only: [:show, :edit, :update, :destroy]
 
   def index
@@ -9,10 +10,12 @@ class MoviesController < ApplicationController
 
   def new
     @movie = Movie.new
+    authorize @movie
   end
 
   def create
-    @movie = Movie.new(movie_params)
+    @movie = current_user.movies.new(movie_params)
+    authorize :movie
 
     if @movie.save
       redirect_to movies_path, notice: "Movie was successfully created"
@@ -29,6 +32,7 @@ class MoviesController < ApplicationController
 
   def update
     if @movie.update(movie_params)
+      authorize @movie
       redirect_to navigation_location, notice: 'Movie was successfully updated'
     else
       render :edit, status: :unprocessable_entity
