@@ -2,7 +2,8 @@
   h2 = controller_name.humanize
 
 - content_for(:button_link) do
-  = link_to 'New movie', new_movie_path, class: 'btn btn-outline-primary text-black', data: { turbo_frame: 'second_frame' }
+  - if user_signed_in?
+    = link_to 'New movie', new_movie_path, class: 'btn btn-outline-primary text-black', data: { turbo_frame: 'second_frame' }
 
 .card
   .card-header
