@@ -41,6 +41,7 @@ gem "sidekiq", "~> 6.5"
 gem "simple_form", "~> 5.1"
 gem "acts_as_votable", "~> 0.13.2"
 gem "pagy", "~> 5.10"
+gem "view_component", "~> 2.57" , require: "view_component/engine"
 
 # Use Sass to process CSS
 gem "sassc-rails"
