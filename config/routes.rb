@@ -12,4 +12,10 @@ Rails.application.routes.draw do
       patch 'vote_down'
     end
   end
+
+  resources :users do
+    collection do
+      get 'create_random'
+    end
+  end
 end

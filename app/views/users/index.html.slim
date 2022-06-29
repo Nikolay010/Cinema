@@ -1,0 +1,21 @@
+- content_for(:title) do
+  h2 Users
+
+- content_for(:button_link) do
+  = link_to 'Create', create_random_users_path, class:'btn btn-sm btn-outline-success'
+
+table.table
+  thead
+    tr
+      th scope="col"  #
+      th scope="col"  Email
+      th scope="col"  Role
+      th scope="col"  Action
+
+  tbody
+    - @users.each do |user|
+      tr
+        th scope="row"  1
+        td = user.email
+        td = user.role
+        td

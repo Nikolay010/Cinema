@@ -14,7 +14,10 @@ nav.navbar.navbar-expand-lg.navbar-dark.bg-dark.sticky-top.navbar-expand-md
               | User
             ul.dropdown-menu.dropdown-menu-dark aria-labelledby="navbarDarkDropdownMenuLink"
               li
-                = button_to "Sign out", destroy_user_session_path, method: :delete, class: 'dropdown-item'
+                = link_to 'Sidekiq', sidekiq_web_path, class: 'dropdown-item'
+              .dropdown-divider
+              li
+                = button_to "Si gn out", destroy_user_session_path, method: :delete, class: 'dropdown-item'
       - else
         ul.navbar-nav
           li.nav-item = link_to 'Sign Up', new_user_registration_path, class: "nav-link btn btn-dark"
